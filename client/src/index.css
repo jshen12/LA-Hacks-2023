@@ -90,3 +90,41 @@ p {
   cursor: pointer;
   background-color: #03774d;
 }
+
+.sign-up-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-form {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #04AA6D;
+  padding: 5rem;
+  gap: 0.5rem;
+  border-radius: 1rem;
+} 
+
+.email-label, .password-label, .name-label, .address-label {
+  font-size: 1.2rem;
+}
+
+.email-input-container, .password-input-container, .name-input-container, .address-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-input, .password-input, .name-input, .address-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
