@@ -6,6 +6,7 @@ import Listing from "./Listing";
 const Listings = ({ listings, handleClick, idClicked }) => {
 
   const listingRefs = useRef([]);
+  const [isFlashing, setIsFlashing] = useState(false);
 
   useEffect(() => {
     listingRefs.current = listingRefs.current.slice(0, listings.length);
@@ -18,8 +19,19 @@ const Listings = ({ listings, handleClick, idClicked }) => {
         behavior: "smooth",
         block: "center"
       });
+
+      const interval = setInterval(() => {  {/*setting up flashing */}
+        setIsFlashing(false);
+        listingRefs.current[idClicked].classList.remove('flashing');
+      }, 2000);
+
+      listingRefs.current[idClicked].classList.add('flashing');
+
+      return () => clearInterval(interval);
     }
   }, [idClicked])
+
+  const [count, setCount] = useState(0);
 
   return (
     <div className="listings-container">

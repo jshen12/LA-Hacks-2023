@@ -23,6 +23,17 @@ p {
   padding: 1rem;
 }
 
+.flashing {
+  animation: flash 2s infinite;
+}
+
+@keyframes flash {
+  50% {
+    background-color: #369026;
+    color: #fcf9ed;
+  }
+}
+
 .listing-container:hover {
   cursor: pointer;
   background-color: rgb(241, 241, 241);
