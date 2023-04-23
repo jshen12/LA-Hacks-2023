@@ -134,7 +134,7 @@ p {
 } 
 
 
-.sign-up-header{
+.form-header{
   color: var(--primary);
   font-size: 2.0rem;
   text-align: center;
@@ -180,9 +180,9 @@ p {
 
 .sign-up-form-btn:hover,
 .sign-up-form-btn:focus {
-  background-color: #04AA6D;
-  color: white;
-  border: solid 2px white;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: solid 2px var(--secondary);
 }
 
 .sign-up-form-btn:active {

@@ -31,7 +31,7 @@ const SignUpPage = ({}) => {
 
   return (
     <div className="sign-up-page">
-      <div className="sign-up-header">
+      <div className="form-header">
         Create An Account
       </div>
       <div className="sign-up-form-container">

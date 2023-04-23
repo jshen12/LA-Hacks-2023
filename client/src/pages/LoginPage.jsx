@@ -32,6 +32,9 @@ const LogInPage = ({}) => {
 
   return (
     <div className="sign-up-page">
+      <div className="form-header">
+        Log In
+      </div>
       <div className="sign-up-form-container">
         <form className="sign-up-form" onSubmit={(e) => {
           e.preventDefault();
