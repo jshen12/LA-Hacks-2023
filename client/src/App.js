@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/Map.js'
+import Listings from "./components/Listings";
+import CreateListing from "./pages/CreateListing";
+import SignUpPage from "./pages/SignUpPage";
 import React, {useState, useEffect, useRef} from 'react';
 
 
@@ -16,6 +19,7 @@ const markers = [
 function App() {
   const [idClicked, setIdClicked] = useState(-1);
   const [currentLoc, setCurrentLoc] = useState({lat: 34.0689, lng: -118.4452});
+  const [isPopUpForm, setIsPopUpForm] = useState(false);
   const zoom = 15;
 
   useEffect(() => {
