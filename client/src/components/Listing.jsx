@@ -52,8 +52,8 @@ const Listing = forwardRef(function Listing({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        borderTop: "gray 1px solid",
-        borderBottom: "gray 1px solid",
+        borderTop: "#369026 1px solid",
+        borderBottom: "#369026 1px solid",
         marginTop: "-1px",
         marginLeft: "-1px",
       }}

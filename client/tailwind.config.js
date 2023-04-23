@@ -15,11 +15,6 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
 
-  colors: {
-    primary: '#F28C28',
-    secondary: '#fcf9ed',
-  },
-
   theme: {
 
     borderColor: theme => ({
