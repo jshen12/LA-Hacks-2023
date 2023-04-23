@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
+
+import axios from 'axios';
+
+const placeURL = "https://getplace-yp3v6pqoaq-uw.a.run.app";
 
 const SignUpPage = ({}) => {
   const navigate = useNavigate();
@@ -15,13 +19,18 @@ const SignUpPage = ({}) => {
 
   const handleSubmit = async () => {
     try {
-      await addDoc(restaurantsRef, {
+      const newDocRef = doc(restaurantsRef);
+      let response = await axios.post(placeURL, {input: address});
+      await setDoc(newDocRef, {
         email: email,
         password: password,
         name: name,
         address: address,
         currListings: [],
         prevListings: [],
+        lat: response["data"]["candidates"][0]["geometry"]["location"]["lat"],
+        lng: response["data"]["candidates"][0]["geometry"]["location"]["lng"],
+        id: newDocRef.id,
       });
     } catch (err) {
       console.log(err);

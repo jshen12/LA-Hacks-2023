@@ -1,46 +1,53 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { doc, getDocs, getDoc, collection } from "firebase/firestore";
+import { doc, getDocs, getDoc, collection, where, query} from "firebase/firestore";
 import { db } from "../firebase-config";
-import Listings from "../components/Listings";
+import RestaurantListings from "../components/RestaurantListings";
 import CreateListing from "./CreateListing";
+
 
 const UserPage = ({ loggedInRestaurantId }) => {
   const navigate = useNavigate();
 
   const [isPopUpForm, setIsPopUpForm] = useState(false);
   const [loggedInRestaurant, setLoggedInRestaurant] = useState({});
-  const [loggedInRestaurantListings, setLoggedInRestaurantListenings] =
+  const [loggedInRestaurantListings, setLoggedInRestaurantListings] =
     useState([]);
 
   const restaurantsRef = collection(db, "restaurants");
   const listingsRef = collection(db, "listings");
+  
 
   useEffect(() => {
+    const getData = async () => {
+      const q = query(restaurantsRef, where("id", '==', loggedInRestaurantId));
+      const qSnapshot = await getDocs(q);
+      qSnapshot.forEach((doc) => {
+        setLoggedInRestaurant(doc.data());
+      })
+    }
     getData();
-  }, []);
+  }, [loggedInRestaurantId]);
 
-  const getData = async () => {
-    let obj = {};
-    const restaurants = await getDocs(restaurantsRef);
-    restaurants.forEach((restaurants) => {
-      if (restaurants.id == loggedInRestaurantId) {
-        obj = restaurants.data();
+  useEffect(() => {
+    const getListings = async () => {
+      if (loggedInRestaurant["currListings"]) {
+        let newListings = [];
+        for (const listingID of loggedInRestaurant["currListings"]) {
+          const q2 = query(restaurantsRef, where("id", '==', listingID));
+          const q2Snapshot = await getDocs(q2);
+          console.log(q2Snapshot);
+          q2Snapshot.forEach((doc) => {
+            newListings.push(doc.data());
+          })
+        }
+        console.log(newListings);
+        setLoggedInRestaurantListings(newListings);
       }
-    });
-    setLoggedInRestaurant(obj);
+    }
+    getListings();
+  }, [loggedInRestaurant])
 
-    let arr = [];
-    const listings = await getDocs(listingsRef);
-    listings.forEach((listing) => {
-      let listingData = listing.data();
-      if (listingData.rest_id == loggedInRestaurantId) {
-        arr = loggedInRestaurantListings;
-        arr.push(listing);
-      }
-    });
-    setLoggedInRestaurantListenings(arr);
-  };
 
   return (
     <div className="user-page" style={{ display: "flex" }}>
@@ -64,7 +71,7 @@ const UserPage = ({ loggedInRestaurantId }) => {
         </div>
       </div>
       <div className="rest-listings-container" style={{ flex: "5" }}>
-        <Listings listings={loggedInRestaurantListings} />
+        <RestaurantListings listings={loggedInRestaurantListings} />
         <div
           style={{
             display: "flex",

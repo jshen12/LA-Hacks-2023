@@ -10,12 +10,12 @@ const Listings = ({ listings, handleClick, idClicked, currentPos }) => {
 
   useEffect(() => {
     listingRefs.current = listingRefs.current.slice(0, listings.length);
-
   }, [listings]);
 
   useEffect(() => {
     
     if (idClicked !== -1) {
+
       listingRefs.current[idClicked].scrollIntoView({
         behavior: "smooth",
         block: "center"
@@ -38,12 +38,13 @@ const Listings = ({ listings, handleClick, idClicked, currentPos }) => {
     <div className="listings-container">
       {listings.map((listing, i) => (
         <Listing
-          key={listing._id}
-          id={listing._id}
-          food_name={listing.food_name}
-          food_quantity={listing.food_quantity}
-          rest_name={listing.rest_name}
-          end_time={listing.end_time}
+          key={listing.id}
+          id={listing.id}
+          _id={listing._id}
+          food_name={listing.foodName}
+          food_quantity={listing.foodQuantity}
+          rest_name={listing.restName}
+          end_time={listing.endTime}
           sourceCoord={currentPos.lat.toString()+","+currentPos.lng.toString()}
           destCoord={listing.lat.toString()+","+listing.lng.toString()}
           handleClick={handleClick}

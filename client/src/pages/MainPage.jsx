@@ -2,98 +2,21 @@ import Map from '../components/Map.js'
 import Listings from "../components/Listings";
 import CreateListing from "./CreateListing";
 import React, {useState, useEffect, useRef} from 'react';
+import { doc, getDocs, getDoc, collection, where, query} from "firebase/firestore";
+import { db } from "../firebase-config";
 import logo from '../assets/small_logo.png';
 
 
-let listings = [
-  {
-    _id: 0,
-    food_name: "Eggs",
-    food_quantity: 12,
-    rest_name: "Ralph's",
-    rest_dist: 0.3,
-    end_time: new Date(2023, 4, 23, 18, 30),
-    lat: 34.0659, 
-    lng: -118.4452,
-  },
-  {
-    _id: 1,
-    food_name: "Milk",
-    food_quantity: 3,
-    rest_name: "Ralph's",
-    rest_dist: 0.3,
-    end_time: new Date("2023-04-25"),
-    lat: 34.0669, 
-    lng: -118.4452
-  },
-  {
-    _id: 2,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0679, 
-    lng: -118.4452
-  },
-  {
-    _id: 3,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0679, 
-    lng: -118.4442
-  },
-  {
-    _id: 4,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0699, 
-    lng: -118.4422
-  },
-  {
-    _id: 5,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0609, 
-    lng: -118.4452
-  },
-  {
-    _id: 6,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0629, 
-    lng: -118.4412
-  },
-  {
-    _id: 7,
-    food_name: "BLT Sandwich",
-    food_quantity: 1,
-    rest_name: "Target",
-    rest_dist: 0.8,
-    end_time: new Date("2023-04-23"),
-    lat: 34.0699, 
-    lng: -118.4492
-  },
-];
 
 function MainPage() {
   const [idClicked, setIdClicked] = useState(-1);
   const [currentLoc, setCurrentLoc] = useState({lat: 34.0689, lng: -118.4452});
   const [isPopUpForm, setIsPopUpForm] = useState(false);  
   const [searchInput, setSearchInput] = useState('Enter Your Location');
+  const [listings, setListings] = useState([]);
   const zoom = 15;
+
+  const listingsRef = collection(db, "listings");
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -106,6 +29,24 @@ function MainPage() {
     } else {
       console.log("error");
     }
+  }, []);
+
+  useEffect(() => {
+    const getListings = async () => {
+      const newListings = [];
+      const snapshot = await getDocs(listingsRef);
+      let i = 0;
+      snapshot.forEach((doc) => {     
+        let newList = doc.data();
+        newList["_id"] = i;
+        newListings.push(newList);
+        i += 1;
+      })
+      console.log(newListings);
+      setListings(newListings);
+    }
+
+    getListings();
   }, [])
 
   const handleMarkerClick = (name) => {

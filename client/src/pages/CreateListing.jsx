@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { db } from "../firebase-config";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, updateDoc, arrayUnion } from "firebase/firestore";
 
 export const CreateListing = ({ setIsPopUpForm, loggedInRestaurantId }) => {
-  const listingsRef = collection(db, "listings")
+  const listingsRef = collection(db, "listings");
+  const restaurantsRef = doc(db, "restaurants", loggedInRestaurantId);
 
   const schema = yup.object().shape({
     foodName: yup.string().required("You must add a food name"),
@@ -33,11 +34,23 @@ export const CreateListing = ({ setIsPopUpForm, loggedInRestaurantId }) => {
   };
 
   const onListingPost = async (data) => {
-    await addDoc(listingsRef, {
+    const newDocRef = doc(listingsRef);
+    const RestRef = await getDoc(restaurantsRef);
+    console.log(RestRef.data());
+    const restData = RestRef.data();
+    await setDoc(newDocRef, {
       foodName: data.foodName,
       foodQuantity: data.foodQuantity,
       endTime: data.endTime,
-      rest_id: loggedInRestaurantId
+      restName: restData.name,
+      rest_id: loggedInRestaurantId,
+      lat: restData.lat,
+      lng: restData.lng,
+      id: newDocRef.id,
+    });
+
+    await updateDoc(restaurantsRef, {
+      currListings: arrayUnion(newDocRef.id)
     });
 
     window.location.reload();

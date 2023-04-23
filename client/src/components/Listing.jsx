@@ -7,6 +7,7 @@ import axios from 'axios';
 const distURL = "https://getdistance-yp3v6pqoaq-wl.a.run.app"
 // maybe add path to food image
 const Listing = forwardRef(function Listing({
+  _id,
   id,
   food_name,
   food_quantity,
@@ -25,19 +26,11 @@ const Listing = forwardRef(function Listing({
   }, [destCoord, sourceCoord])
 
 
-  const onListingClick = (e) => {handleClick(id)};
+  const onListingClick = (e) => {handleClick(_id)};
 
-  end_time =
-    (end_time.getMonth() + 1) +
-    "/" +
-    end_time.getDate() +
-    "/" +
-    end_time.getFullYear() +
-    " @ " +
-    end_time.getHours() +
-    ":" +
-    (end_time.getMinutes() < 10 ? "0" : "") +
-    end_time.getMinutes();
+  var endTime = new Date();
+  endTime.setSeconds(endTime.getSeconds() + end_time.seconds);
+
 
   return (
     <div
@@ -51,14 +44,14 @@ const Listing = forwardRef(function Listing({
         marginTop: "-1px",
         marginLeft: "-1px",
       }}
-      onClick={() => handleClick(id)}
+      onClick={() => handleClick(_id)}
       ref={ref}
     >
       <div className="food-name-container" style={{ flex: "1" }}>
         <p>{food_name}</p>
       </div>
       <div className="end-time-container" style={{ flex: "1" }}>
-        <p>{end_time}</p>
+        <p>{endTime.toString()}</p>
       </div>
       <div
         className="rest-container"
@@ -77,6 +70,6 @@ const Listing = forwardRef(function Listing({
       </div>
     </div>
   );
-  });
+});
 
 export default Listing;

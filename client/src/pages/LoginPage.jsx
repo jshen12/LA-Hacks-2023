@@ -22,7 +22,7 @@ const LogInPage = ({}) => {
       });
       if (loggedInRestaurantId) {
         localStorage.setItem("rest_id", loggedInRestaurantId);
-        navigate("/");
+        navigate("/restaurant/"+loggedInRestaurantId.toString());
       }
 
     } catch (err) {
