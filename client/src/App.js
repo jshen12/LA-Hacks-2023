@@ -1,10 +1,7 @@
 import './App.css';
-import Map from './components/Map.js'
-import Listings from "./components/Listings";
-import CreateListing from "./pages/CreateListing";
 import React, { useState, useEffect } from "react";
 import SignUpPage from "./pages/SignUpPage";
-import LogInPage from "./pages/LogInPage";
+import LoginPage from "./pages/LoginPage";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainPage from './pages/MainPage';
@@ -23,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<></>} />
           <Route path="/app" element={<MainPage />} />
-          <Route path="/login" element={<LogInPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route
             path="/restaurant/:id"
