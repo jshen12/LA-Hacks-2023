@@ -40,7 +40,7 @@ p {
 }
 
 .food-name-container {
-  color: #202124;
+  color: #369026;
   font-size: 1rem;
   font-weight: bold;
   letter-spacing: 0;
@@ -49,7 +49,7 @@ p {
 }
 
 .food-quantity-container, .rest-container, .end-time-container {
-  color: rgb(112, 117, 122);
+  color: #4a5568;
   font-family: "Roboto";
   font-size: 0.875rem;
   font-weight: 400;
@@ -63,7 +63,7 @@ p {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #4a5568;
   display: flex;
   align-items: center;
   justify-content: center;

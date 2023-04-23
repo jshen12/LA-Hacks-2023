@@ -14,6 +14,7 @@ const Listings = ({ listings, handleClick, idClicked }) => {
   }, [listings]);
 
   useEffect(() => {
+    
     if (idClicked !== -1) {
       listingRefs.current[idClicked].scrollIntoView({
         behavior: "smooth",
