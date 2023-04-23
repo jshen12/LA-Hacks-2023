@@ -19,7 +19,7 @@ function Map ({center, zoom, markers, markerClickFunc}) {
   ));
 
   return (
-    <GoogleMap zoom={zoom} center={center} mapContainerStyle={{height: "100vh", width: "50%"}}>
+    <GoogleMap zoom={zoom} center={center} mapContainerStyle={{height: "100vh", width: "100%"}}>
       {markerComponents}
       
     </GoogleMap>

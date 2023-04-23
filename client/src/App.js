@@ -5,6 +5,7 @@ import CreateListing from "./pages/CreateListing";
 import SignUpPage from "./pages/SignUpPage";
 import Layout from './Layout.js';
 import React, {useState, useEffect, useRef} from 'react';
+import logo from './assets/small_logo.png';
 
 
 
@@ -104,6 +105,7 @@ function App() {
   const [idClicked, setIdClicked] = useState(-1);
   const [currentLoc, setCurrentLoc] = useState({lat: 34.0689, lng: -118.4452});
   const [isPopUpForm, setIsPopUpForm] = useState(false);
+  const [searchInput, setSearchInput] = useState('Enter Your Location');
   const zoom = 15;
 
   useEffect(() => {
@@ -133,11 +135,20 @@ function App() {
 
 
   return (
-    <div class="flex">
-      <Layout />
-      <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked}/>
-      <Map center={currentLoc} zoom={zoom} markers={listings} markerClickFunc={handleMarkerClick}/>
-    </div>
+      <div class = "flex flex-row flex-wrap h-screen bg-secondary" > {/* main screen*/}
+        <div class = "w-3/5 text-custom_gray h-screen"> {/* listing part*/}
+          <div class = "flex items-center h-12 p-2 mt-4"> {/* Logo + search bar*/}
+              <img src= {logo} alt = "logo" class= "w-12 h-14 ml-4 mr-6"/>
+              <input type="text" value={searchInput} onChange={setSearchInput} class = "flex flex-grow h-8 p-4 pl-2 mr-4 border-2 border-primary rounded-md bg-secondary "/>
+          </div>
+          <div class ="flex flex-grow flex-col mt-8 justify-start h-5/6" >
+            <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked}/>
+          </div>
+        </div>
+        <div class = "sticky h-full w-2/5 bg-primary text-secondary place-items-center"> {/* map part*/}
+          <Map center={currentLoc} zoom={zoom} markers={listings} markerClickFunc={handleMarkerClick}/>
+        </div>
+      </div>
   );
 }
 
