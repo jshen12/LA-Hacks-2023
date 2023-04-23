@@ -10,19 +10,18 @@ const LogInPage = ({}) => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    let loggedInRestaurant = {};
-    const restaurantsRef = collection(db, "restaurant");
+    let loggedInRestaurantId = null;
+    const restaurantsRef = collection(db, "restaurants");
     try {
       const restaurants = await getDocs(restaurantsRef);
       restaurants.forEach((restaurant) => {
-        console.log(restaurant);
-        if (restaurant.email == email && restaurant.password == password) {
-          loggedInRestaurant = restaurant;
+        let restaurantData = restaurant.data();
+        if (restaurantData.email == email && restaurantData.password == password) {
+          loggedInRestaurantId = restaurant.id;
         }
       });
-
-      if (loggedInRestaurant) {
-        localStorage.setItem("rest_id", loggedInRestaurant._id);
+      if (loggedInRestaurantId) {
+        localStorage.setItem("rest_id", loggedInRestaurantId);
         navigate("/");
       }
 
@@ -34,7 +33,10 @@ const LogInPage = ({}) => {
   return (
     <div className="sign-up-page">
       <div className="sign-up-form-container">
-        <form className="sign-up-form" onSubmit={() => handleSubmit()}>
+        <form className="sign-up-form" onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}>
           <div className="email-input-container">
             <label className="email-label">Email </label>
             <input

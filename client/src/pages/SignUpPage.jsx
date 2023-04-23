@@ -15,7 +15,7 @@ const SignUpPage = ({}) => {
 
   const handleSubmit = async () => {
     try {
-        await addDoc(restaurantsRef, {
+      await addDoc(restaurantsRef, {
         email: email,
         password: password,
         name: name,
@@ -32,7 +32,13 @@ const SignUpPage = ({}) => {
   return (
     <div className="sign-up-page">
       <div className="sign-up-form-container">
-        <form className="sign-up-form" onSubmit={() => handleSubmit()}>
+        <form
+          className="sign-up-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <div className="email-input-container">
             <label className="email-label">Email </label>
             <input
