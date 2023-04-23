@@ -70,7 +70,7 @@ export const CreateListing = ({ setIsPopUpForm }) => {
             style={{ textAlign: "center" }}
           >
             <div style={{ marginBottom: "0.5rem", textAlign: "center" }}>
-              <label for="end-time-input">End Time: </label>
+              <label htmlFor="end-time-input">End Time: </label>
             </div>
             <input
               id="end-time-input"
