@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 //import GoogleMapReact from 'google-map-react'
-import { GoogleMap, LoadScript, MarkerF, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerClusterer, MarkerF, useLoadScript } from "@react-google-maps/api";
 
 
 
@@ -21,6 +21,7 @@ function Map ({center, zoom, markers, markerClickFunc}) {
   return (
     <GoogleMap zoom={zoom} center={center} mapContainerStyle={{height: "100vh", width: "50%"}}>
       {markerComponents}
+      
     </GoogleMap>
   )
 }
