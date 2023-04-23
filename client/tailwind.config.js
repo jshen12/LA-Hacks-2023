@@ -23,15 +23,15 @@ module.exports = {
   theme: {
 
     borderColor: theme => ({
-      'primary': '#F28C28',
+      'primary': '#369026',
       'secondary': '#fcf9ed'
       }),
     backgroundColor: theme => ({
-      'primary': '#F28C28',
+      'primary': '#369026',
       'secondary': '#fcf9ed'
     }), 
     textColor: {
-      'primary': '#F28C28',
+      'primary': '#369026',
       'secondary': '#fcf9ed',
       'custom_gray': '#4a5568'
     },

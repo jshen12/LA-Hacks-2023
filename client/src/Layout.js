@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {useState} from 'react';
-import logo from './assets/mac_and_cheese.png';
+import logo from './assets/small_logo.png';
 
 function Layout() {
     const [inputValue, setInputValue] = useState('Enter Your Location');
@@ -16,8 +16,8 @@ function Layout() {
   return (
     <div class = "flex flex-row flex-wrap h-screen bg-secondary" > {/* main screen*/}
         <div class = "w-3/5 text-custom_gray "> {/* listing part*/}
-            <div class = "flex items-center h-12 p-2 mt-2"> {/* Logo + search bar*/}
-                <img src= {logo} alt = "logo" class= "w-8 h-8 ml-4 mr-8"/>
+            <div class = "flex items-center h-12 p-2 mt-4"> {/* Logo + search bar*/}
+                <img src= {logo} alt = "logo" class= "w-12 h-14 ml-4 mr-6"/>
                 <input type="text" value={inputValue} onChange={handleChange} class = "flex flex-grow h-8 p-4 pl-2 mr-4 border-2 border-primary rounded-md bg-secondary "/>
             </div>
             <div class ="flex flex-grow flex-col mt-8 justify-start" >
