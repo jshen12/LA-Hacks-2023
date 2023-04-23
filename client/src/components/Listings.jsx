@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, forwardRef, createRef} from "react";
 import Listing from "./Listing";
-
+//import axios from'axios';
 
 
 const Listings = ({ listings, handleClick, idClicked, currentPos }) => {
