@@ -66,7 +66,7 @@ function MainPage() {
         <div class = "w-1/2 text-custom_gray h-screen"> {/* listing part*/}
           <div class = "flex items-center h-12 p-2 mt-4"> {/* Logo + search bar*/}
               <img src= {logo} alt = "logo" class= "w-12 h-14 ml-4 mr-6"/>
-              <input type="text" value={searchInput} onChange={setSearchInput} class = "flex flex-grow h-8 p-4 pl-2 mr-4 border-2 border-primary rounded-md bg-secondary "/>
+              <input type="text" value={searchInput} onChange={setSearchInput} class = "flex flex-grow h-8 p-4 pl-4 mr-4 border-2 border-primary rounded-full bg-secondary "/>
           </div>
           <div class ="flex flex-grow flex-col mt-8 justify-start h-5/6" >
             <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked} currentPos={currentLoc}/>
