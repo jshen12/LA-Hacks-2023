@@ -3,6 +3,7 @@ import Map from './components/Map.js'
 import Listings from "./components/Listings";
 import CreateListing from "./pages/CreateListing";
 import SignUpPage from "./pages/SignUpPage";
+import Layout from './Layout.js';
 import React, {useState, useEffect, useRef} from 'react';
 
 
@@ -98,6 +99,7 @@ let listings = [
 
 
 
+
 function App() {
   const [idClicked, setIdClicked] = useState(-1);
   const [currentLoc, setCurrentLoc] = useState({lat: 34.0689, lng: -118.4452});
@@ -132,6 +134,7 @@ function App() {
 
   return (
     <div class="flex">
+      <Layout />
       <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked}/>
       <Map center={currentLoc} zoom={zoom} markers={listings} markerClickFunc={handleMarkerClick}/>
     </div>
