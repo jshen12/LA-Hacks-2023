@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { db } from "../firebase-config";
+import { addDoc, collection } from "firebase/firestore";
 
-export const CreateListing = ({ setIsPopUpForm }) => {
+export const CreateListing = ({ setIsPopUpForm, loggedInRestaurantId }) => {
+  const listingsRef = collection(db, "listings")
+
   const schema = yup.object().shape({
     foodName: yup.string().required("You must add a food name"),
     foodQuantity: yup
@@ -28,7 +32,16 @@ export const CreateListing = ({ setIsPopUpForm }) => {
     setIsPopUpForm(false);
   };
 
-  const onListingPost = () => {};
+  const onListingPost = async (data) => {
+    await addDoc(listingsRef, {
+      foodName: data.foodName,
+      foodQuantity: data.foodQuantity,
+      endTime: data.endTime,
+      rest_id: loggedInRestaurantId
+    });
+
+    window.location.reload();
+  };
 
   return (
     <div className="modal" onClick={() => handleClick()}>
