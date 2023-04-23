@@ -58,15 +58,15 @@ const UserPage = ({ loggedInRestaurantId }) => {
           flexDirection: "column",
           display: "flex",
           justifyContent: "flex-start",
-          alignItems: "center",
-          backgroundColor: "orange",
+          alignItems: "flex-start",
+          backgroundColor: "#369026",
           height: "100vh",
         }}
       >
-        <div className="rest-name-container" style={{marginTop: "5rem"}}>
+        <div className="rest-name-container" class = "m-2 mt-8 mb-5 text-2xl text-secondary">
           <h2>{loggedInRestaurant.name}</h2>
         </div>
-        <div className="rest-address-container">
+        <div className="rest-address-container" class = "m-2 text-secondary">
           <h2>{loggedInRestaurant.address}</h2>
         </div>
       </div>
@@ -81,7 +81,8 @@ const UserPage = ({ loggedInRestaurantId }) => {
           }}
         >
           <button
-            className="add-listing-button"
+            className="add-listing-btn"
+            class = "text-2xl content-center p-4 pl-8 pr-8 border-2 border-primary hover:bg-primary text-primary hover:text-secondary rounded-full"
             onClick={() => setIsPopUpForm(true)}
           >
             Add Listing

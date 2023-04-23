@@ -63,7 +63,7 @@ p {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: #4a5568;
+  background-color: #369026;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ p {
 }
 
 #listing-form-submit-btn {
-  background-color: #04AA6D;
+  background-color: #369026;
   border: none;
   border-radius: 2rem;
   color: white;

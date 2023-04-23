@@ -66,10 +66,10 @@ export const CreateListing = ({ setIsPopUpForm, loggedInRestaurantId }) => {
         <div
           className="add-listing-form-container"
         >
-          <h2>Add a Listing</h2>
+          <h2 class = "text-2xl text-primary" >Add a Listing</h2>
           <div
             className="food-name-input-container"
-            style={{ textAlign: "center" }}
+            class = "center text-#D3D3D3"
           >
             <input
               id="food-name-input"
@@ -95,7 +95,7 @@ export const CreateListing = ({ setIsPopUpForm, loggedInRestaurantId }) => {
             className="end-time-input-container"
             style={{ textAlign: "center" }}
           >
-            <div style={{ marginBottom: "0.5rem", textAlign: "center" }}>
+            <div style={{ marginBottom: "0.5rem", textAlign: "center"}}>
               <label htmlFor="end-time-input">End Time: </label>
             </div>
             <input
