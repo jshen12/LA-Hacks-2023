@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 
 // maybe add path to food image
-const Listing = ({
+const Listing = forwardRef(function Listing({
+  id,
   food_name,
   food_quantity,
   rest_name,
   rest_dist,
   end_time,
-}) => {
+  handleClick,
+}, ref) {
   // event listener for clicking on listing
-  const onListingClick = (e) => {};
+  const onListingClick = (e) => {handleClick(id)};
 
   end_time =
     (end_time.getMonth() + 1) +
@@ -35,7 +37,8 @@ const Listing = ({
         marginTop: "-1px",
         marginLeft: "-1px",
       }}
-      onClick={(e) => onListingClick(e)}
+      onClick={() => handleClick(id)}
+      ref={ref}
     >
       <div className="food-name-container" style={{ flex: "1" }}>
         <p>{food_name}</p>
@@ -60,6 +63,6 @@ const Listing = ({
       </div>
     </div>
   );
-};
+  });
 
 export default Listing;

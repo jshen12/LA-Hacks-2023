@@ -10,11 +10,11 @@ function Map ({center, zoom, markers, markerClickFunc}) {
   });
   if (!isLoaded) return <div>Loading...</div>
 
-  const markerComponents = markers.map(({id, name, lat, lng}, ind) => (
+  const markerComponents = markers.map(({_id, lat, lng}, ind) => (
     <MarkerF 
       key={ind}
       position={{lat, lng}}
-      onClick={() => {markerClickFunc(id);}}
+      onClick={() => {markerClickFunc(_id);}}
       />
   ));
 
