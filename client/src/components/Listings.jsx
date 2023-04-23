@@ -32,6 +32,8 @@ const Listings = ({ listings, handleClick, idClicked }) => {
           rest_name={listing.rest_name}
           rest_dist={listing.rest_dist}
           end_time={listing.end_time}
+          lat={listing.lat}
+          lng={listing.lng}
           handleClick={handleClick}
           ref={el => listingRefs.current[i] = el}
         />

@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-//import GoogleMapReact from 'google-map-react'
-import { GoogleMap, LoadScript, MarkerClusterer, MarkerF, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 
 
 

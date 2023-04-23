@@ -1,5 +1,11 @@
 import React, { useState, useEffect, forwardRef } from "react";
+import { DistanceMatrixService } from "@react-google-maps/api";
 
+import axios from 'axios';
+
+
+const distURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="
+const apiKey = "AIzaSyBlCKlyClwWy-yF6ObFU8I9oARXSxrrJfI"
 // maybe add path to food image
 const Listing = forwardRef(function Listing({
   id,
@@ -8,9 +14,23 @@ const Listing = forwardRef(function Listing({
   rest_name,
   rest_dist,
   end_time,
+  lat,
+  lng,
   handleClick,
 }, ref) {
   // event listener for clicking on listing
+  const [distance, setDistance] = useState("");
+  useEffect(() => {
+    //const service = new google.maps.DistanceMatrixService();
+
+
+    const origin = {lat: lat, lng: lng};
+    //axios.get(distURL+lat.toString()+'%2C'+lng.toString()+'&key='+apiKey).then((response) => {
+    //  console.log(JSON.stringify(response))
+    //}).catch((e) => {console.log(e.message);})
+  }, [lat, lng])
+
+
   const onListingClick = (e) => {handleClick(id)};
 
   end_time =

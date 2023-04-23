@@ -8,13 +8,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import logo from './assets/small_logo.png';
 
 
-
-const markers = [
-  { id: 0, address: "Address1", lat: 34.0659, lng: -118.4452 },
-  { id: 1, address: "Address2", lat: 34.0669, lng: -118.4452 },
-  { id: 2, address: "Address3", lat: 34.0679, lng: -118.4452 },
-];
-
 let listings = [
   {
     _id: 0,
@@ -136,7 +129,7 @@ function App() {
 
   return (
       <div class = "flex flex-row flex-wrap h-screen bg-secondary" > {/* main screen*/}
-        <div class = "w-3/5 text-custom_gray h-screen"> {/* listing part*/}
+        <div class = "w-1/2 text-custom_gray h-screen"> {/* listing part*/}
           <div class = "flex items-center h-12 p-2 mt-4"> {/* Logo + search bar*/}
               <img src= {logo} alt = "logo" class= "w-12 h-14 ml-4 mr-6"/>
               <input type="text" value={searchInput} onChange={setSearchInput} class = "flex flex-grow h-8 p-4 pl-2 mr-4 border-2 border-primary rounded-md bg-secondary "/>
@@ -145,7 +138,7 @@ function App() {
             <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked}/>
           </div>
         </div>
-        <div class = "sticky h-full w-2/5 bg-primary text-secondary place-items-center"> {/* map part*/}
+        <div class = "sticky h-full w-1/2 bg-primary text-secondary place-items-center"> {/* map part*/}
           <Map center={currentLoc} zoom={zoom} markers={listings} markerClickFunc={handleMarkerClick}/>
         </div>
       </div>
