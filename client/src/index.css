@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #369026;
+  --secondary: #fcf9ed;
+  --custom_gray: ##4a5568;
+}
+
+
 html, body, #root, .app {
   height: 100%;
   width: 100%;
@@ -107,7 +114,7 @@ p {
 }
 
 .sign-up-page {
-  background-color: #e7e7e7;
+  background-color: var(--secondary);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -120,12 +127,19 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #04AA6D;
+  background-color: var(--primary);
   padding: 3rem 2rem;
   gap: 0.5rem;
   border-radius: 1rem;
 } 
 
+
+.sign-up-header{
+  color: var(--primary);
+  font-size: 2.0rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
 .email-label, .password-label, .name-label, .address-label {
   font-size: 1.2rem;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -135,10 +149,12 @@ p {
   display: flex;
   flex-direction: column;
   text-align: left;
+  color:var(--secondary);
 }
 
 .email-input, .password-input, .name-input, .address-input {
   width: 20rem;
+  color: var(--primary);
   padding: 0.75rem 1.5rem;
   margin: 8px 0;
   display: inline-block;
@@ -146,13 +162,14 @@ p {
   box-sizing: border-box;
   font-size: 1rem;
   border-radius: 0.75rem;
+  background-color: var(--secondary);
 }
 
 .sign-up-form-btn {
-  background-color: #fff;
+  background-color: var(--secondary);
   border-radius: 8px;
-  border: solid 2px #04AA6D;
-  color: #04AA6D;
+  border: solid 2px var(--primary);
+  color: var(--primary);
   cursor: pointer;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;

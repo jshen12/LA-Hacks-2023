@@ -31,6 +31,9 @@ const SignUpPage = ({}) => {
 
   return (
     <div className="sign-up-page">
+      <div className="sign-up-header">
+        Create An Account
+      </div>
       <div className="sign-up-form-container">
         <form
           className="sign-up-form"
@@ -86,11 +89,11 @@ const SignUpPage = ({}) => {
         style={{
           marginTop: "1rem",
           textAlign: "left",
-          color: "#04AA6D",
+          color: "#369026",
           cursor: "pointer",
         }}
       >
-        <Link to="/login" style={{ color: "#04AA6D", textDecoration: "none" }}>
+        <Link to="/login" style={{ color: "#369026", textDecoration: "none" }}>
           <p id="already">Already have an account? Log in Here</p>
         </Link>
       </div>
