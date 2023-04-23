@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import UserPage from "./pages/UserPage";
+import LandingPage from './pages/LandingPage';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainPage from './pages/MainPage';
 
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<></>} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/app" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
