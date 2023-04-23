@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import Layout from './Layout.js';
 
 function App() {
   return (
     <div className="App">
+      <Layout />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <img src={logo} className="App-logo" alt="logo" />
+          Hi, Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -18,7 +21,9 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    
+
+  </div>
   );
 }
 
