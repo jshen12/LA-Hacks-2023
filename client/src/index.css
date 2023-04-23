@@ -161,4 +161,22 @@ p {
   color: #026843;
 }
 
+.add-listing-btn {
+  background-color: #fff;
+  border-radius: 12px;
+  border: solid 2px #04AA6D;
+  color: #04AA6D;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.add-listening-btn:hover {
+  background-color: #04AA6D;
+  color: white;
+  border: solid 2px white;
+}
 

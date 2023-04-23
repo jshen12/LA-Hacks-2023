@@ -1,25 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-
 const LogInPage = ({}) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    let loggedInRestaurant = {}
+    let loggedInRestaurant = {};
     const restaurantsRef = collection(db, "restaurant");
-    const restaurants = await getDocs(restaurantsRef);
-    restaurants.forEach(restaurant => {
-      if (restaurant.email == email && restaurant.password == password) {
-        loggedInRestaurant = restaurant;
-      }
-    })
+    try {
+      const restaurants = await getDocs(restaurantsRef);
+      restaurants.forEach((restaurant) => {
+        console.log(restaurant);
+        if (restaurant.email == email && restaurant.password == password) {
+          loggedInRestaurant = restaurant;
+        }
+      });
 
-    if (loggedInRestaurant) {
-      localStorage.setItem("rest_id", loggedInRestaurant._id);
+      if (loggedInRestaurant) {
+        localStorage.setItem("rest_id", loggedInRestaurant._id);
+        navigate("/");
+      }
+
+    } catch (err) {
+      console.log(err);
     }
   };
 
