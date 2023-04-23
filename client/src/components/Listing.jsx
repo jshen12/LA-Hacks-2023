@@ -4,31 +4,25 @@ import { DistanceMatrixService } from "@react-google-maps/api";
 import axios from 'axios';
 
 
-const distURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="
-const apiKey = "AIzaSyBlCKlyClwWy-yF6ObFU8I9oARXSxrrJfI"
+const distURL = "https://getdistance-yp3v6pqoaq-wl.a.run.app"
 // maybe add path to food image
 const Listing = forwardRef(function Listing({
   id,
   food_name,
   food_quantity,
   rest_name,
-  rest_dist,
   end_time,
-  lat,
-  lng,
+  sourceCoord,
+  destCoord,
   handleClick,
 }, ref) {
   // event listener for clicking on listing
   const [distance, setDistance] = useState("");
   useEffect(() => {
-    //const service = new google.maps.DistanceMatrixService();
-
-
-    const origin = {lat: lat, lng: lng};
-    //axios.get(distURL+lat.toString()+'%2C'+lng.toString()+'&key='+apiKey).then((response) => {
-    //  console.log(JSON.stringify(response))
-    //}).catch((e) => {console.log(e.message);})
-  }, [lat, lng])
+    axios.post(distURL, {source: sourceCoord, destination: destCoord}).then((response) => {
+      setDistance(response["data"]["rows"][0]["elements"][0]["distance"]["text"]);
+    }).catch((e) => {console.log(e.message);})
+  }, [destCoord, sourceCoord])
 
 
   const onListingClick = (e) => {handleClick(id)};
@@ -76,7 +70,7 @@ const Listing = forwardRef(function Listing({
         }}
       >
         <p>{rest_name}</p>
-        <p>{rest_dist} mi</p>
+        <p>{distance}</p>
       </div>
       <div className="food-quantity-container" style={{ flex: "1" }}>
         <p>Quantity: {food_quantity}</p>

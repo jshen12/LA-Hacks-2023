@@ -3,7 +3,7 @@ import Listing from "./Listing";
 
 
 
-const Listings = ({ listings, handleClick, idClicked }) => {
+const Listings = ({ listings, handleClick, idClicked, currentPos }) => {
 
   const listingRefs = useRef([]);
   const [isFlashing, setIsFlashing] = useState(false);
@@ -43,10 +43,9 @@ const Listings = ({ listings, handleClick, idClicked }) => {
           food_name={listing.food_name}
           food_quantity={listing.food_quantity}
           rest_name={listing.rest_name}
-          rest_dist={listing.rest_dist}
           end_time={listing.end_time}
-          lat={listing.lat}
-          lng={listing.lng}
+          sourceCoord={currentPos.lat.toString()+","+currentPos.lng.toString()}
+          destCoord={listing.lat.toString()+","+listing.lng.toString()}
           handleClick={handleClick}
           ref={el => listingRefs.current[i] = el}
         />

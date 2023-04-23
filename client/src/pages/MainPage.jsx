@@ -128,7 +128,7 @@ function MainPage() {
               <input type="text" value={searchInput} onChange={setSearchInput} class = "flex flex-grow h-8 p-4 pl-2 mr-4 border-2 border-primary rounded-md bg-secondary "/>
           </div>
           <div class ="flex flex-grow flex-col mt-8 justify-start h-5/6" >
-            <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked}/>
+            <Listings listings={listings} handleClick={handleListingClick} idClicked={idClicked} currentPos={currentLoc}/>
           </div>
         </div>
         <div class = "sticky h-full w-1/2 bg-primary text-secondary place-items-center"> {/* map part*/}
